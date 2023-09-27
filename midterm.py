@@ -9,6 +9,15 @@ import sys
 import time
 
 ##############################
+#IDLE CHECK (SCRIPT IS MEANT TO BE RUN IN A COMMAND LINE STYLE ENVIRONMENT)
+
+#How to check if running in idle?
+#
+#
+#
+#
+
+##############################
 #ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS)
 #Get User ID
 username = os.geteuid()
@@ -22,24 +31,37 @@ if username == 0:
 
 #Request ROOT access
 else:
-    print('''*WARNING*
+    while True:
+        os.system('clear')
+        print('''*WARNING*
 This application requires ROOT access...
 Please log into ROOT now.
           ''')
-    print('Is the root password set? (y/n)')
-    rootSet = input('> ')
-    rootSet = rootSet.upper()
-    if rootSet == 'NO' or rootSet == 'N':
-        print('Please set your ROOT Password now!')
-        os.system('passwd root')
-        print()
-        print('After getting ROOT access, enter the following command...')
-        print('     python3 ' + __file__)
-        os.system('su -')
-    elif rootSet == 'YES' or rootSet == 'Y':
-        print('After getting ROOT access, enter the following command...')
-        print('     python3 ' + __file__)
-        os.system('su -')
+        print('Is the root password set? (y/n)')
+        rootSet = input('> ')
+        rootSet = rootSet.upper()
+        if rootSet == 'NO' or rootSet == 'N':
+            print('Please set your ROOT Password now!')
+            os.system('passwd root')
+            print()
+            print('After getting ROOT access, enter the following command...')
+            print('     python3 ' + __file__)
+            os.system('su -')
+        elif rootSet == 'YES' or rootSet == 'Y':
+            print('After getting ROOT access, enter the following command...')
+            print('     python3 ' + __file__)
+            os.system('su -')
+        else:
+            os.system('clear')
+            n = 8
+            for i in range(n):
+                os.system('clear')
+                if (i % 2) == 0:
+                    print('That is not Valid. Try Again.')
+                    time.sleep(0.5)
+                else:
+                    print()
+                    time.sleep(0.5)
 
 ##############################
 #PIP CHECK
@@ -96,8 +118,14 @@ def menuLinux():
 #    print('C. ')
 #    print('D. ')
 
-def netTools():
+def continuing():
+    print()
+    input('Press ENTER to return to menu... ')
+
+def netTools(title):
     os.system('clear')
+    title()
+    print('NET-TOOLS\n')
     print('A. See ALL Information')
     print('B. See Active Interfaces')
     print('C. See Down Interfaces')
@@ -186,18 +214,19 @@ while True:
     menu = menu.upper()
 
     if menu == 'A':
-        os.system('apt upgrade && update -y')
+        os.system('apt update && upgrade -y')
         time.sleep(2)
     elif menu == 'B':
+        os.system('apt-get install net-tools')
         while True:
-            os.system('apt-get install net-tools')
-            netTools()
+            netTools(title)
             print()
             print('Please enter a letter.')
             netMenu = input('> ')
             netMenu = netMenu.upper()
             if netMenu == 'A':
-                print('netmenu a') ####DO I CONTINUE THE NETTOOLS MENU HERE OR SHOULD IT BE PUT INSDIE THE FUNCTION
+                os.system('ifconfig') ####DO I CONTINUE THE NETTOOLS MENU HERE OR SHOULD IT BE PUT INSDIE THE FUNCTION
+                continuing()
             if netMenu == 'Z':
                 break
     elif menu == 'Y':
