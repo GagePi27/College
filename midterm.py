@@ -1,6 +1,9 @@
 """
-Slow down typing speed if possible...
+This is a Python program designed as a simple and easy-to-use install assistant for various operating systems. After installing the operating system of your choice, (currently limited to Linux) you can use this program to start up various parts of your OS. 
+Want to quickly create a Root user or be walked though your SSH setup? Great!
+Get your updates done? Absolutely!
 
+In the future I hope to add Windows support and extra functionality. 
 """
 ##############################
 #IMPORTS_A
