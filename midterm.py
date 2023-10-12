@@ -37,9 +37,11 @@ else:
 This application requires ROOT access...
 Please log into ROOT now.
           ''')
+        #Does the ROOT password exist?
         print('Is the root password set? (y/n)')
         rootSet = input('> ')
         rootSet = rootSet.upper()
+        #ROOT password does NOT exist
         if rootSet == 'NO' or rootSet == 'N':
             print('Please set your ROOT Password now!')
             os.system('passwd root')
@@ -47,10 +49,12 @@ Please log into ROOT now.
             print('After getting ROOT access, enter the following command...')
             print('     python3 ' + __file__)
             os.system('su -')
+        #ROOT password exists
         elif rootSet == 'YES' or rootSet == 'Y':
             print('After getting ROOT access, enter the following command...')
             print('     python3 ' + __file__)
             os.system('su -')
+        #Non-Valid Answer
         else:
             os.system('clear')
             n = 8
@@ -65,20 +69,20 @@ Please log into ROOT now.
 
 ##############################
 #PIP CHECK
-os.system('apt-get install pip')
+os.system('apt-get install pip -y')
 
 ##############################
 #IMPORTS_B (NOT PRE-INSTALLED)
 try:
     import pyperclip
 except:
-    os.system('pip install pyperclip')
+    os.system('pip install pyperclip -y')
     import pyperclip
 
 try:
     import pyfiglet
 except:
-    os.system('pip install pyfiglet')
+    os.system('pip install pyfiglet -y')
     import pyfiglet
 
 ##############################
@@ -88,6 +92,26 @@ def title():
     os.system('clear')
     print(pyfiglet.figlet_format('TERMINEX\n'))
     print('-----' * 20)
+
+#Slow Print Function
+def slowPrint(input):
+    for letter in input:
+        print(letter, end='')
+        time.sleep(.3)
+    print()
+
+#Slow Print Multiline Function
+def slowPrintMulti(input):
+    for line in input:
+        for letter in line:
+            print(letter, end='')
+            time.sleep(.3)
+
+#Fast Print Function
+def fastPrint(input):
+    for letter in input:
+        print(letter, end='')
+        time.sleep(.1)
 
 #Print Blinky Function
 def blinky(input, title):
@@ -102,7 +126,7 @@ def blinky(input, title):
             print()
             time.sleep(0.5)
 
-#Print Linux Menu
+#Print Linux Menu Function
 def menuLinux():
     print('A. Update and Upgrade')
     print('B. Net-Tools')
@@ -118,10 +142,12 @@ def menuLinux():
 #    print('C. ')
 #    print('D. ')
 
+#Continue Function
 def continuing():
     print()
     input('Press ENTER to return to menu... ')
 
+#NetTools Menu Function
 def netTools(title):
     os.system('clear')
     title()
@@ -150,6 +176,8 @@ This program is your menu to the world of
     Powershell Terminals...
     AND MORE!!!
       ''')
+
+slowPrint('hello')
 
 ##############################
 #OS CHECK
@@ -187,7 +215,7 @@ else:
 * Anything beyond this point has NOT been tested.
           ''')
 
-#UNSUPPORTED CONTINUANCE
+    #UNSUPPORTED CONTINUANCE
     while True:
         print('Do you wish to continue? (y/N)')
         choice1 = input('> ')
@@ -203,7 +231,7 @@ else:
 ##############################
 #MENU START
 
-time.sleep(5)
+time.sleep(4)
 
 while True:
     title()
@@ -213,9 +241,11 @@ while True:
     menu = input('> ')
     menu = menu.upper()
 
+    #Update && Upgrade
     if menu == 'A':
         os.system('apt update && upgrade -y')
         time.sleep(2)
+    #NetTools Menu
     elif menu == 'B':
         os.system('apt-get install net-tools')
         while True:
@@ -227,8 +257,14 @@ while True:
             if netMenu == 'A':
                 os.system('ifconfig') ####DO I CONTINUE THE NETTOOLS MENU HERE OR SHOULD IT BE PUT INSDIE THE FUNCTION
                 continuing()
-            if netMenu == 'Z':
+            elif netMenu == 'Z':
                 break
+            #Non-Valid Answer
+            else:
+                blinky('That is not Valid. Try Again.', title)
+    elif menu == 'C':
+        os.system('')
+    #The Truth
     elif menu == 'Y':
         print('''
 The truth about this project is that...
@@ -237,10 +273,12 @@ But after learning so much code........
   I will probably never need it again.
               ''')
         time.sleep(7)
+    #Exit Program
     elif menu == 'Z':
         print('Thank you for using TERMINEX! Goodbye!')
         time.sleep(1)
         title()
         sys.exit()
+    #Non-Valid Answer
     else:
         blinky('That is not Valid. Try Again.', title)
