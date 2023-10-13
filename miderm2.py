@@ -26,44 +26,6 @@ elif sys.platform.startswith('darwin'):
 else:
     system = 'unknown'
 
-# OS(LINUX) ACCEPTANCE
-if system == 'Linux':
-    print('''CONGRATULATIONS!
-* Your OS is currently supported by TERMINEX
-     Entering TERMINEX...''')
-
-# UNSUPPORTED OS
-else:
-    print('''
-WARNING!
-* Your OS is not currently supported by TERMINEX.
-          ''')
-    if system != 'Windows' and system != 'macOS':
-        print('''     
-    TERMINEX does not even know what your OS is.....
-    That is an accomplishment.......................
-              ''')
-    else:
-        print('''    
-    TERMINEX does not currently support ''' + system.upper() + '''.
-    Continuing is NOT recommended.
-    * Anything beyond this point has NOT been tested.
-    * Anything beyond this point is NOT apart of my midterm... Zeller.
-              ''')
-
-    # UNSUPPORTED CONTINUANCE
-    while True:
-        print('Do you wish to continue? (y/N)')
-        choice1 = input('> ')
-        choice1 = choice1.upper()
-        if choice1 == 'Y' or choice1 == 'YES':
-            break  # ENTER PROGRAM
-        elif choice1 == 'N' or choice1 == 'NO' or choice1 == '':
-            print('\nGoodbye!')
-            sys.exit()  # EXIT
-        else:
-            print('That is not a correct answer. Try Again')
-
 ##############################
 # ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS)
 # Get User ID
@@ -124,7 +86,7 @@ except:
     import pyfiglet
 
 ##############################
-# FUNCTIONS
+# REGULAR FUNCTIONS
 
 # Print Title Function
 def title():
@@ -145,4 +107,119 @@ def fastPrint(input):
         print(letter, end='')
         time.sleep(.1)
     print()
+
+#Print Blinky Function
+def blinky(input, title):
+    n = 8
+    for i in range(n):
+        os.system('clear')
+        title()
+        if (i % 2) == 0:
+            print(input)
+            time.sleep(0.5)
+        else:
+            print()
+            time.sleep(0.5)
+
+##############################
+# MENU FUNCTIONS
+
+# Linux Main Menu Function
+def menuLinux(title):
+    title()
+    print('A. ')
+    print('B. ')
+    print('C. ')
+    print('D. ')
+    print('Y. Learn the Truth about this Project')
+    print('Z. Exit Program')
+
+def aLinux:
+    os.system('apt update && upgrade -y')
+    time.sleep(2)
+
+
+##############################
+# WELCOME
+
+os.system('clear')
+time.sleep(0.2)
+
+print(pyfiglet.figlet_format('Welcome!!'))
+time.sleep(1)
+
+print('''
+Welcome to TERMINEX!
+
+This program is your menu to the world of 
+    Linux Terminals...
+    Commmand Lines...
+    Powershell Terminals...
+    AND MORE!!!
+      ''')
+
+##############################
+# OS(LINUX) ACCEPTANCE
+if system == 'Linux':
+    print('''CONGRATULATIONS!
+* Your OS is currently supported by TERMINEX
+     Entering TERMINEX...''')
+
+# UNSUPPORTED OS
+else:
+    print('''
+WARNING!
+* Your OS is not currently supported by TERMINEX.
+          ''')
+    if system != 'Windows' and system != 'macOS':
+        print('''     
+    TERMINEX does not even know what your OS is.....
+    That is an accomplishment.......................
+              ''')
+    else:
+        print('''    
+    TERMINEX does not currently support ''' + system.upper() + '''.
+    Continuing is NOT recommended.
+    * Anything beyond this point has NOT been tested.
+    * Anything beyond this point is NOT apart of my midterm... Zeller.
+              ''')
+
+    # UNSUPPORTED CONTINUANCE
+    while True:
+        print('Do you wish to continue? (y/N)')
+        choice1 = input('> ')
+        choice1 = choice1.upper()
+        if choice1 == 'Y' or choice1 == 'YES':
+            break  # ENTER PROGRAM
+        elif choice1 == 'N' or choice1 == 'NO' or choice1 == '':
+            print('\nGoodbye!')
+            sys.exit()  # EXIT
+        else:
+            print('That is not a correct answer. Try Again')
+
+##############################
+# MAIN MENU
+
+time.sleep(4)
+
+while True:
+    menuLinux(title())
+    menuLinuxInput = input('> ')
+    menuLinuxInput = menuLinuxInput.upper()
+    if menuLinuxInput == 'A':
+        aLinux()
+    elif menuLinuxInput == 'B':
+        print('NOT READY')
+    elif menuLinuxInput == 'C':
+        print('NOT READY')
+    elif menuLinuxInput == 'D':
+        print('NOT READY')
+    elif menuLinuxInput == 'Y':
+        print('NOT READY')
+    elif menuLinuxInput == 'Z':
+        title()
+        print('Thank you. Goodbye!')
+        sys.exit()
+    else:
+        blinky('That is not valid. Try Again.', title())
 
