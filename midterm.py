@@ -1,6 +1,6 @@
 """
 This is a Python program designed as a simple and easy-to-use install assistant for various operating systems. After installing the operating system of your choice, (currently limited to Linux) you can use this program to start up various parts of your OS. 
-Want to quickly create a Root user or be walked though your SSH setup? Great!
+Want to quickly create a Root user or be walked through your SSH setup? Great!
 Get your updates done? Absolutely!
 
 In the future I hope to add Windows support and extra functionality. 
@@ -23,7 +23,7 @@ import time
 ##############################
 #ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS)
 #Get User ID
-username = os.geteuid()
+username = os.getpid()
 print('Username ID:' + str(username))
 print()
 time.sleep(0.75)
@@ -133,7 +133,7 @@ def blinky(input, title):
 def menuLinux():
     print('A. Update and Upgrade')
     print('B. Net-Tools')
-    print('C. ')
+    print('C. SSH Settings')
     print('D. ')
     print('Y. Learn the Truth about this Project')
     print('Z. Exit Program')
@@ -160,6 +160,14 @@ def netTools(title):
     print('C. See Down Interfaces')
     print('Z. Return to Menu!')
 
+#SSH Settings Menu Function
+def sshSettings(title):
+    os.system('clear')
+    title()
+    print('SSH Settings\n')
+    print('A. Enable / Disable SSH')
+    print('B. Enable / Disable ROOT SSH access')
+    print('Z. Return to Menu!')
 ##############################
 #WELCOME
 
@@ -266,7 +274,13 @@ while True:
             else:
                 blinky('That is not Valid. Try Again.', title)
     elif menu == 'C':
-        os.system('')
+        while True:
+            sshSettings(title)
+            print()
+            print('Please enter a letter.')
+            sshMenu = input('> ')
+            if sshMenu == 'A':
+
     #The Truth
     elif menu == 'Y':
         print('''
