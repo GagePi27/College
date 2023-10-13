@@ -29,7 +29,7 @@ else:
 ##############################
 # ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS)
 # Get User ID
-username = os.getpid()
+username = os.getuid()
 print('-----' * 20 + '\nUsername ID:' + str(username) + '\n')
 time.sleep(0.75)
 
@@ -151,6 +151,7 @@ os.system('clear')
 time.sleep(0.2)
 
 print(pyfiglet.figlet_format('Welcome!!'))
+print('-----' * 20)
 time.sleep(1)
 
 print('''
@@ -208,13 +209,13 @@ WARNING!
 time.sleep(4)
 
 while True:
-    menuLinux(title())
+    menuLinux(title)
     menuLinuxInput = input('> ')
     menuLinuxInput = menuLinuxInput.upper()
     if menuLinuxInput == 'A':
-        aLinux(title())
+        aLinux(title)
     elif menuLinuxInput == 'B':
-        bLinux(title())
+        bLinux(title)
     elif menuLinuxInput == 'C':
         print('NOT READY')
     elif menuLinuxInput == 'D':
@@ -226,5 +227,5 @@ while True:
         print('Thank you. Goodbye!')
         sys.exit()
     else:
-        blinky('That is not valid. Try Again.', title())
+        blinky('That is not valid. Try Again.', title)
 
