@@ -134,9 +134,14 @@ def menuLinux(title):
     print('Y. Learn the Truth about this Project')
     print('Z. Exit Program')
 
-def aLinux:
+def aLinux(title):
+    title()
     os.system('apt update && upgrade -y')
     time.sleep(2)
+
+def bLinux(title):
+    title()
+
 
 
 ##############################
@@ -207,9 +212,9 @@ while True:
     menuLinuxInput = input('> ')
     menuLinuxInput = menuLinuxInput.upper()
     if menuLinuxInput == 'A':
-        aLinux()
+        aLinux(title())
     elif menuLinuxInput == 'B':
-        print('NOT READY')
+        bLinux(title())
     elif menuLinuxInput == 'C':
         print('NOT READY')
     elif menuLinuxInput == 'D':
