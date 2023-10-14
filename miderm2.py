@@ -98,14 +98,16 @@ def title():
 def slowPrint(input):
     for letter in input:
         print(letter, end='')
-        time.sleep(.25)
+        time.sleep(.4)
+        sys.stdout.flush()
     print()
 
 # Slow Print Function
 def fastPrint(input):
     for letter in input:
         print(letter, end='')
-        time.sleep(.1)
+        time.sleep(.05)
+        sys.stdout.flush()
     print()
 
 #Print Blinky Function
@@ -120,6 +122,18 @@ def blinky(input, title):
         else:
             print()
             time.sleep(0.5)
+
+#Print Fake Load Function
+def fakeLoad(title):
+    n = 3
+    for i in range(n):
+        title()
+        print()
+        fake = '.....'
+        for period in fake:
+            print(period, end='')
+            time.sleep(.3)
+            sys.stdout.flush()
 
 ##############################
 # MENU FUNCTIONS
@@ -148,9 +162,9 @@ def cLinux(title):
 def yLinux(title):
     title()
     print('The truth is... I wanted to build something I would genuinely use')
-    time.sleep(.5)
+    time.sleep(1.5)
     print('In the end though, I have coded enough to not need this program again...')
-    time.sleep(1)
+    time.sleep(5)
 
 ##############################
 # WELCOME
@@ -162,7 +176,7 @@ print(pyfiglet.figlet_format('Welcome!!'))
 print('-----' * 20)
 time.sleep(1)
 
-print('''
+fastPrint('''
 Welcome to TERMINEX!
 
 This program is your menu to the world of 
@@ -172,6 +186,7 @@ This program is your menu to the world of
     AND MORE!!!
       ''')
 
+title()
 ##############################
 # OS(LINUX) ACCEPTANCE
 if system == 'Linux':
@@ -215,6 +230,7 @@ WARNING!
 # MAIN MENU
 
 time.sleep(4)
+fakeLoad(title)
 
 while True:
     menuLinux(title)
@@ -233,7 +249,8 @@ while True:
     elif menuLinuxInput == 'Z':
         title()
         print('Thank you. Goodbye!')
-        time.sleep(1)
+        time.sleep(2)
+        os.system('clear')
         sys.exit()
     else:
         blinky('That is not valid. Try Again.', title)
