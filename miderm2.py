@@ -142,7 +142,15 @@ def aLinux(title):
 def bLinux(title):
     title()
 
+def cLinux(title):
+    title()
 
+def yLinux(title):
+    title()
+    print('The truth is... I wanted to build something I would genuinely use')
+    time.sleep(.5)
+    print('In the end though, I have coded enough to not need this program again...')
+    time.sleep(1)
 
 ##############################
 # WELCOME
@@ -217,14 +225,15 @@ while True:
     elif menuLinuxInput == 'B':
         bLinux(title)
     elif menuLinuxInput == 'C':
-        print('NOT READY')
+        cLinux(title)
     elif menuLinuxInput == 'D':
         print('NOT READY')
     elif menuLinuxInput == 'Y':
-        print('NOT READY')
+        yLinux(title)
     elif menuLinuxInput == 'Z':
         title()
         print('Thank you. Goodbye!')
+        time.sleep(1)
         sys.exit()
     else:
         blinky('That is not valid. Try Again.', title)
