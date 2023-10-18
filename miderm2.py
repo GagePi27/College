@@ -1,5 +1,5 @@
 """
-WARNINGGGG THIS IS A NON-FUNCTIONAL COPY AS I REORGANIZE MY CODE
+WARNINGGGG THIS IS A NON-FUNCTIONAL COPY AS I R EORGANIZE MY CODE
 This is a Python program designed as a simple and easy-to-use install assistant for various operating systems.
 After installing the operating system of your choice,
      (currently limited to Linux) you can use this program to start up various parts of your OS.
@@ -13,6 +13,8 @@ In the future I hope to add Windows support and extra functionality.
 import os
 import sys
 import time
+import ipaddress
+import socket
 
 ##############################
 # OS CHECK
@@ -29,7 +31,7 @@ else:
 ##############################
 # ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS)
 # Get User ID
-username = os.getuid()
+username = os.getpid()
 print('-----' * 20 + '\nUsername ID:' + str(username) + '\n')
 time.sleep(0.75)
 
@@ -62,6 +64,9 @@ Please log into ROOT now.
             print('After getting ROOT access, enter the following command...')
             print('     python3 ' + __file__)
             os.system('su -')
+        # Bypass
+        elif rootSet == 'BYPASS':
+            break
         # Non-Valid Answer
         else:
             os.system('clear')
@@ -76,13 +81,13 @@ os.system('apt-get install pip -y')
 try:
     import pyperclip
 except:
-    os.system('pip install pyperclip -y')
+    os.system('pip install pyperclip')
     import pyperclip
 
 try:
     import pyfiglet
 except:
-    os.system('pip install pyfiglet -y')
+    os.system('pip install pyfiglet')
     import pyfiglet
 
 ##############################
@@ -153,8 +158,13 @@ def aLinux(title):
     os.system('apt update && upgrade -y')
     time.sleep(2)
 
-def bLinux(title):
+def bLinux(title,fakeLoad):
     title()
+    hostname = socket.gethostname()
+    ipAddr = socket.gethostname(hostname)
+    print('Your IP Address is: ' + ipAddr)
+    print('/nFinding open ports',end='')
+    fakeLoad()
 
 def cLinux(title):
     title()
@@ -239,7 +249,7 @@ while True:
     if menuLinuxInput == 'A':
         aLinux(title)
     elif menuLinuxInput == 'B':
-        bLinux(title)
+        bLinux(title,fakeLoad)
     elif menuLinuxInput == 'C':
         cLinux(title)
     elif menuLinuxInput == 'D':
