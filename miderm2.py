@@ -2,7 +2,6 @@
 #Gage Giffin
 #Midterm Project
 """
-WARNINGGGG THIS IS A NON-FUNCTIONAL COPY AS I R EORGANIZE MY CODE
 This is a Python program designed as a simple and easy-to-use install assistant for various operating systems.
 After installing the operating system of your choice,
      (currently limited to Linux) you can use this program to start up various parts of your OS.
@@ -16,8 +15,6 @@ In the future I hope to add Windows support and extra functionality.
 import os
 import sys
 import time
-import ipaddress
-import socket
 
 ##############################
 # OS CHECK
@@ -170,6 +167,18 @@ def bLinux(title,fakeLoad):
 def cLinux(title):
     title()
     print('Here are the users on this machine...')
+    time.sleep(.5)
+    user_data = []
+    with open('/etc/passwd', 'r') as passwd_file:
+        for line in passwd_file:
+            parts = line.strip().split(':')
+            if len(parts) >= 3:
+                username = parts[0]
+                user_data.append(username)
+    for user in user_data:
+        print(user)
+        time.sleep(.1)
+    time.sleep(3)
 
 def yLinux(title):
     title()
