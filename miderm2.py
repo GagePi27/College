@@ -31,7 +31,7 @@ else:
 ##############################
 # ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS)
 # Get User ID
-username = os.getpid()
+username = os.getuid()
 print('-----' * 20 + '\nUsername ID:' + str(username) + '\n')
 time.sleep(0.75)
 
