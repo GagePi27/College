@@ -1,3 +1,6 @@
+#INF360
+#Gage Giffin
+#Midterm Project
 """
 WARNINGGGG THIS IS A NON-FUNCTIONAL COPY AS I R EORGANIZE MY CODE
 This is a Python program designed as a simple and easy-to-use install assistant for various operating systems.
@@ -146,9 +149,9 @@ def fakeLoad(title):
 # Linux Main Menu Function
 def menuLinux(title):
     title()
-    print('A. ')
+    print('A. Update and Upgrade')
     print('B. ')
-    print('C. ')
+    print('C. Users and Groups')
     print('D. ')
     print('Y. Learn the Truth about this Project')
     print('Z. Exit Program')
@@ -160,14 +163,13 @@ def aLinux(title):
 
 def bLinux(title,fakeLoad):
     title()
-    hostname = socket.gethostname()
-    ipAddr = socket.gethostname(hostname)
-    print('Your IP Address is: ' + ipAddr)
-    print('/nFinding open ports',end='')
-    fakeLoad()
-
+#    hostname = socket.gethostname()
+#    ipAddr = socket.gethostname(hostname)
+#    print('Your IP Address is: ' + ipAddr)
+    time.sleep(2)
 def cLinux(title):
     title()
+    print('Here are the users on this machine...')
 
 def yLinux(title):
     title()
