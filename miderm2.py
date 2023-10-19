@@ -9,12 +9,17 @@ Want to quickly create a Root user or be walked through your SSH setup? Great!
 Get your updates done? Absolutely!
 
 In the future I hope to add Windows support and extra functionality.
+
+REQUIREMENTS
+- pyfiglet
+- 
 """
 ##############################
 # IMPORTS_A
 import os
 import sys
 import time
+import pyfiglet
 
 ##############################
 # OS CHECK
@@ -31,7 +36,7 @@ else:
 ##############################
 # ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS)
 # Get User ID
-username = os.getuid()
+username = os.getpid()
 print('-----' * 20 + '\nUsername ID:' + str(username) + '\n')
 time.sleep(0.75)
 
@@ -75,20 +80,6 @@ Please log into ROOT now.
 ##############################
 # PIP CHECK
 os.system('apt-get install pip -y')
-
-##############################
-# IMPORTS_B (NOT PRE-INSTALLED)
-try:
-    import pyperclip
-except:
-    os.system('pip install pyperclip')
-    import pyperclip
-
-try:
-    import pyfiglet
-except:
-    os.system('pip install pyfiglet')
-    import pyfiglet
 
 ##############################
 # REGULAR FUNCTIONS
@@ -166,7 +157,7 @@ def bLinux(title,fakeLoad):
     time.sleep(2)
 def cLinux(title):
     title()
-    print('Here are the users on this machine...')
+    print('Here are the users on this machine...\n')
     time.sleep(.5)
     user_data = []
     with open('/etc/passwd', 'r') as passwd_file:
