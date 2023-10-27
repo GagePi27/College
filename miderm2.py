@@ -148,7 +148,7 @@ def menuLinux(title):
 # Linux Update && Upgrade
 def aLinux(title):
     title()
-    os.system('apt update && upgrade -y')
+    os.system('apt update && apt upgrade -y')
     time.sleep(2)
 
 # Linux Networking
