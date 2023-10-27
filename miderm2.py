@@ -14,7 +14,7 @@ Secondly, I want to add more functionality.
 - Installing and configuring SSH
 - Basic network information and tools
 - More. 
-Finally, if time allows, I would like to add windows functionality to this. The OS detector is already built into the code, so it shouldn't be the worst to get up and running. 
+Finally, I would like to find a way to block user input at times. While the program does not break, it can cause an 'else loop' when too many incorrect inputs are made. 
 
 REQUIREMENTS
 - pyfiglet
