@@ -8,11 +8,16 @@ After installing the operating system of your choice,
 Want to quickly create a Root user or be walked through your SSH setup? Great!
 Get your updates done? Absolutely!
 
-In the future I hope to add Windows support and extra functionality.
+For my final, I have a few improvements in mind. 
+Firstly, requiring ROOT access at the beginning was incorrect in hindsight. I want to rewrite the code to only ask for root access when required. 
+Secondly, I want to add more functionality.
+- Installing and configuring SSH
+- Basic network information and tools
+- More. 
+Finally, if time allows, I would like to add windows functionality to this. The OS detector is already built into the code, so it shouldn't be the worst to get up and running. 
 
 REQUIREMENTS
 - pyfiglet
-- 
 """
 ##############################
 # IMPORTS_A
@@ -34,7 +39,7 @@ else:
     system = 'unknown'
 
 ##############################
-# ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS)
+# ROOT CHECK (REQUIRED FOR VARIOUS ACTIONS) TO BE FIXED LATER
 # Get User ID
 username = os.getuid()
 print('-----' * 20 + '\nUsername ID:' + str(username) + '\n')
@@ -76,10 +81,6 @@ Please log into ROOT now.
         else:
             os.system('clear')
             print('That is not Valid. Try Again.')
-
-##############################
-# PIP CHECK
-os.system('apt-get install pip -y')
 
 ##############################
 # REGULAR FUNCTIONS
@@ -138,23 +139,28 @@ def fakeLoad(title):
 def menuLinux(title):
     title()
     print('A. Update and Upgrade')
-    print('B. ')
+    print('B. Networking **IN PROGRESS')
     print('C. Users and Groups')
-    print('D. ')
+    print('D. SSH Tools **IN PROGRESS')
     print('Y. Learn the Truth about this Project')
     print('Z. Exit Program')
 
+# Linux Update && Upgrade
 def aLinux(title):
     title()
     os.system('apt update && upgrade -y')
     time.sleep(2)
 
+# Linux Networking
 def bLinux(title,fakeLoad):
     title()
+    print('Work In Progress... Sorry')
 #    hostname = socket.gethostname()
 #    ipAddr = socket.gethostname(hostname)
 #    print('Your IP Address is: ' + ipAddr)
-    time.sleep(2)
+    time.sleep(1)
+
+# Linux Users
 def cLinux(title):
     title()
     print('Here are the users on this machine...\n')
@@ -171,6 +177,13 @@ def cLinux(title):
         time.sleep(.1)
     time.sleep(3)
 
+# Linux SSH Tools
+def dLinux(title):
+     title()
+     print('Work In Progress... Sorry')
+     time.sleep(1)
+     
+# Linux the Truth
 def yLinux(title):
     title()
     print('The truth is... I wanted to build something I would genuinely use')
@@ -181,9 +194,11 @@ def yLinux(title):
 ##############################
 # WELCOME
 
+# Clear
 os.system('clear')
 time.sleep(0.2)
 
+# Welcome Screen
 print(pyfiglet.figlet_format('Welcome!!'))
 print('-----' * 20)
 time.sleep(1)
@@ -244,6 +259,7 @@ WARNING!
 time.sleep(4)
 fakeLoad(title)
 
+#Menu While Loop
 while True:
     menuLinux(title)
     menuLinuxInput = input('> ')
@@ -255,7 +271,7 @@ while True:
     elif menuLinuxInput == 'C':
         cLinux(title)
     elif menuLinuxInput == 'D':
-        print('NOT READY')
+        dLinux(title)
     elif menuLinuxInput == 'Y':
         yLinux(title)
     elif menuLinuxInput == 'Z':
