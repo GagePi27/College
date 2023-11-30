@@ -6,6 +6,7 @@
 This is my final project for Programming in Python.
 I call this program... TERMINEX!
     YOUR personal application for setting up YOUR linux Operating System.
+    **Currently only tested in Ubuntu (Jammy) 22.04.3 LTS
 
 REQUIREMENTS
 Python3  - 'sudo apt install python3'
@@ -29,11 +30,14 @@ logging.basicConfig(filename='terminexLog.txt',
 
 ####################
 #IMPORTS_B
+
+#Import 1st Party Modules
 import os
 import sys
 import time
 logging.debug('Success! - 1st party modules loaded successfully')
 
+#Try/Except Import 3rd Party Modules
 try:
     import pyfiglet
     logging.debug('Success! - Pyfiglet module loaded successfully')
@@ -48,6 +52,8 @@ logging.debug('Success! - All modules loaded successfully')
 
 ####################
 #FUNCTION IMPORTS
+
+#Try/Except Import Functions
 try:
     from FinalBaseAppFunctions import *
     logging.debug('Success! - BaseAppFunctions.py loaded successfully')
@@ -61,18 +67,24 @@ except:
 
 ####################
 #OS CHECK
+
+#Run osAcceptDeny function
 osAcceptDeny(osCheck, title, slowPrint, errorPrint)
 logging.debug('Success! - osAcceptDeny function completed!')
 
 
 ####################
 #LINUX MENU
+
+
 loadPrint(title)
+#Menu While True Loop
 while True:
     linuxMenu(title)
     print('\nPlease enter a menu letter...')
     menuInput = input('> ')
     menuInput = menuInput.upper()
+    #Please see 'FinalLinuxMenuFunctions.py' for the following functions...
     if menuInput == 'A':
         linuxA(title)
     elif menuInput == 'B':
@@ -91,6 +103,7 @@ while True:
         linuxY(title)
     elif menuInput == 'Z':
         linuxZ(title, slowPrint)
+    #Else Error Loop
     else:
         errorPrint(title)
     

@@ -27,7 +27,7 @@ import sys
 import time
 logging.debug('Success! - 1st party modules loaded successfully')
 
-#Try/Except 3rd Party Modules
+#Try/Except Import 3rd Party Modules
 try:
     import pyfiglet
     logging.debug('Success! - Pyfiglet module loaded successfully')

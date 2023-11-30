@@ -25,11 +25,14 @@ logging.basicConfig(filename='terminexLog.txt',
 
 ####################
 #IMPORTS_B
+
+#Import 1st Party Modules
 import os
 import sys
 import time
 logging.debug('Success! - 1st party modules loaded successfully')
 
+#Try/Except Import 3rd Party Modules
 try:
     import pyfiglet
     logging.debug('Success! - Pyfiglet module loaded successfully')
